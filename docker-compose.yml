@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    image: spring-redis
+    ports:
+      - "8082:8082"
+    networks:
+      - spring
+  redis:
+    image: redis
+    command: [ "redis-server", "--protected-mode", "no" ]
+    ports:
+      - "6379:6379"
+    networks:
+      - spring
+
+networks:
+  spring:
+    external: true
